@@ -7,5 +7,7 @@ Actualmente se cuenta con un archivo llamado main.rs que recibe argumentos de l√
 El archivo con las dos funciones 1A y 1B, se encuentra en el archivo patterns.rs.
 
 Ejemplos de llamadas con los archivos de Rosalind.org, son:
+
 ./main -c < 1Adata.txt
+
 ./main -t < 1Bdata.txt
