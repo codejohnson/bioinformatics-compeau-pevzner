@@ -8,11 +8,11 @@ fn pattern_count() {
     let pattern = readline();
     println!("{}", patterns::pattern_count(&text, pattern));
 }
-fn frecuent_words() {
+fn frequent_words() {
     let text = readline();
     let k = readline().parse::<usize>();
     if !k.is_err() {
-        println!("{:?}", patterns::frecuent_words(text, k.unwrap()));
+        println!("{:?}", patterns::frequent_words(text, k.unwrap()));
     }
 }
 
@@ -24,7 +24,7 @@ fn main(){
     }
     match &args[1] as &str {
         "-pc" => pattern_count(),
-        "-fw" => frecuent_words(),
+        "-fw" => frequent_words(),
         &_ => println!("command {} not recognized.",&args[1])
     }
 }

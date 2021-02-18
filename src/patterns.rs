@@ -10,7 +10,7 @@
 
     //challenge 1B, Bioinformatics Compeau-Pevzner
     use std::collections::HashSet;
-    pub fn frecuent_words(text:String,k:usize) -> HashSet<String> {
+    pub fn frequent_words(text:String,k:usize) -> HashSet<String> {
         let mut frequent_patterns:HashSet<String> = HashSet::new();
         let n = text.len() - k + 1;
         let mut count = vec![0;n];
