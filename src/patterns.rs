@@ -1,4 +1,10 @@
+    //--------------------------------------------
     //challenge 1A, Bioinformatics Compeau-Pevzner
+    //
+    //PATTERN COUNT
+    //Se cuenta cuántas veces está el patrón pttrn en la cadena text
+    //
+    //--------------------------------------------
     pub fn pattern_count(text:&String,pttrn:String) -> usize {
         if text.len() < pttrn.len() {return 0}
         let mut c:usize = 0;
@@ -8,7 +14,14 @@
         c
     }
 
+
+    //--------------------------------------------
     //challenge 1B, Bioinformatics Compeau-Pevzner
+    //
+    //FREQUENT WORDS
+    //Se determina el k-mer de tamaño k más frecuente en el texto text
+    //
+    //--------------------------------------------
     use std::collections::HashSet;
     pub fn frequent_words(text:String,k:usize) -> HashSet<String> {
         let mut frequent_patterns:HashSet<String> = HashSet::new();
