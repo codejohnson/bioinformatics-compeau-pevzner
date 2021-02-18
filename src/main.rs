@@ -23,8 +23,8 @@ fn main(){
         return;
     }
     match &args[1] as &str {
-        "-c" => pattern_count(),
-        "-t" => frecuent_words(),
+        "-pc" => pattern_count(),
+        "-fw" => frecuent_words(),
         &_ => println!("command {} not recognized.",&args[1])
     }
 }
