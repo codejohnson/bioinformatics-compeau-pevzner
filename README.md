@@ -8,8 +8,11 @@ El archivo con las dos funciones 1A y 1B, se encuentra en el archivo patterns.rs
 
 Sintaxis:
 Actualmente la llamada se hace sobre main, pero cambiará a biocptools.
+
 Las posibles opciones son:
+
 -pc para el reto 1A-Pattern Count
+
 -fw para el reto 1B-Frequent Words
 
 Ejemplos de llamadas a main con los archivos de Rosalind.org, son:
