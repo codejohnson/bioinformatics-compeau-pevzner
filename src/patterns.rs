@@ -36,7 +36,7 @@
                 frequent_patterns.insert(text[i..i+k].to_string());
             }
         }
-        return frequent_patterns
+        frequent_patterns
     }
 /*
 #[cfg(test)]
