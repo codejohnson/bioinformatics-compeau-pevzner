@@ -2,21 +2,23 @@
 compeau-pevzner bioinformatic algorithms book challenges
 
 Se presenta la solución a retos del libro Bioinformatics Algorithms, de Compeau y Pevzner.
-Los retos fueron validados en Rosalind.org, y los datos de prueba se encuentran disponibles.
-Actualmente se cuenta con un archivo llamado main.rs que recibe argumentos de línea de comandos para las llamadas.
-El archivo con las dos funciones 1A y 1B, se encuentra en el archivo patterns.rs.
+La lista que presento es de retos desarrollados son todos los del capítulo 1, y están certificados por ROSALIND.ORG.
+Los flags permiten invocar la función correcta con algún archivo de datos. 
 
-Sintaxis:
-Actualmente la llamada se hace sobre main, pero cambiará a biocptools.
+Un ejemplo de ejecución es: dnaabox -fmr < test_data/1Jdata.txt
 
-Las posibles opciones son:
-
--pc para el reto 1A-Pattern Count
-
--fw para el reto 1B-Frequent Words
-
-Ejemplos de llamadas a main con los archivos de Rosalind.org, son:
-
-./main -pc < 1Adata.txt
-
-./main -fw < 1Bdata.txt
+--LISTA DE RETOS DESARROLLADOS(del A al N)
+    -pc     => pattern_count()              ......CHALLENGE 1A
+    -fw     => most_frequent_words()        ......CHALLENGE 1B
+    -rc     => reverse_complement()         ......CHALLENGE 1C
+    -pm     => pattern_matching()           ......CHALLENGE 1D
+    -clf    => clump_finding()              ......CHALLENGE 1E
+    -ms     => minimum_skew()               ......CHALLENGE 1F
+    -hd     => hamming_distance()           ......CHALLENGE 1G
+    -apm    => approx_pattern_matching()    ......CHALLENGE 1H
+    -fm     => freq_word_miss()             ......CHALLENGE 1I
+    -fmr    => freq_word_miss_rev()         ......CHALLENGE 1J
+    -cf     => computing_frequences()       ......CHALLENGE 1K
+    -ptn    => pattern_to_number()          ......CHALLENGE 1L
+    -ntp    => number_to_pattern()          ......CHALLENGE 1M
+    -n      => neighbors()                  ......CHALLENGE 1N 
