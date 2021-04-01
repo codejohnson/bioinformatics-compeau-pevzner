@@ -1,8 +1,34 @@
+//------------------------------------------------
+//  command line syntax:
+//  dnaabox -flag < data_file_test_path
+/*
+    possible flags are:
+
+    -pc     => pattern_count()              ......CHALLENGE 1A
+    -fw     => most_frequent_words()        ......CHALLENGE 1B
+    -rc     => reverse_complement()         ......CHALLENGE 1C
+    -pm     => pattern_matching()           ......CHALLENGE 1D
+    -clf    => clump_finding()              ......CHALLENGE 1E
+    -ms     => minimum_skew()               ......CHALLENGE 1F
+    -hd     => hamming_distance()           ......CHALLENGE 1G
+    -apm    => approx_pattern_matching()    ......CHALLENGE 1H
+    -fm     => freq_word_miss()             ......CHALLENGE 1I
+    -fmr    => freq_word_miss_rev()         ......CHALLENGE 1J
+    -cf     => computing_frequences()       ......CHALLENGE 1K
+    -ptn    => pattern_to_number()          ......CHALLENGE 1L
+    -ntp    => number_to_pattern()          ......CHALLENGE 1M
+    -n      => neighbors()                  ......CHALLENGE 1N
+*/
+//------------------------------------------------
+
+
 mod patterns;
 use std::io;
 use std::env;
 use std::io::prelude::*;
 fn readline()->String { io::stdin().lock().lines().next().unwrap().unwrap() }
+
+//function to test 1A Challenge from command line
 fn pattern_count() {
     let text = readline();
     let pattern = readline();
@@ -17,32 +43,22 @@ fn most_frequent_words() {
     }
 }
 
-fn find_frequent_word_with_missmatch_by_sorting() {
+fn freq_word_miss() {
     let text = readline();
     let values = readline();
     let split = values.split(' ').collect::<Vec<&str>>();
     let k = split[0].parse::<usize>().unwrap();
     let d = split[1].parse::<usize>().unwrap();
-    println!("{:?}", patterns::find_frequent_word_with_missmatch_by_sorting(&text, k, d));
+    println!("{:?}", patterns::freq_word_miss_sort(&text, k, d));
 }
 
-fn find_frequent_word_with_missmatch_and_reverse_by_sorting() {
+fn freq_word_miss_rev() {
     let text = readline();
     let values = readline();
     let split = values.split(' ').collect::<Vec<&str>>();
     let k = split[0].parse::<usize>().unwrap();
     let d = split[1].parse::<usize>().unwrap();
-    println!("{:?}", patterns::find_frequent_word_with_missmatch_and_reverse_by_sorting(&text, k, d));
-}
-
-
-fn find_frequent_word_with_missmatch() {
-    let text = readline();
-    let values = readline();
-    let split = values.split(' ').collect::<Vec<&str>>();
-    let k = split[0].parse::<usize>().unwrap();
-    let d = split[1].parse::<usize>().unwrap();
-    println!("{:?}", patterns::find_frequent_word_with_missmatch(&text, k, d));
+    println!("{:?}", patterns::freq_word_miss_rev_sort(&text, k, d));
 }
 
 
@@ -58,11 +74,11 @@ fn pattern_matching() {
     }
     println!();
 }
-fn approximate_pattern_matching() {
+fn approx_pattern_matching() {
     let text = readline();
     let pattern = readline();
     let d = readline().parse::<usize>();
-    for pos in patterns::approximate_pattern_matching(&text,pattern,d.unwrap()).iter() {
+    for pos in patterns::approx_pattern_matching(&text,pattern,d.unwrap()).iter() {
         print!("{} ", pos);
     }
     println!();
@@ -126,12 +142,12 @@ fn main(){
         "-ptn" => pattern_to_number(),
         "-ntp" => number_to_pattern(),
         "-fw" => most_frequent_words(),
-        "-fwm" => find_frequent_word_with_missmatch(),
-        "-fwms" => find_frequent_word_with_missmatch_by_sorting(),
-        "-fwmrs" => find_frequent_word_with_missmatch_and_reverse_by_sorting(),
+        "-fwm" => freq_word_miss(),
+        "-fm" => freq_word_miss(),
+        "-fmr" => freq_word_miss_rev(),
         "-rc" => reverse_complement(),
         "-pm" => pattern_matching(),
-        "-apm" => approximate_pattern_matching(),
+        "-apm" => approx_pattern_matching(),
         "-clf" => clump_finding(), 
         "-ms" => minimum_skew(),
         "-hd" => hamming_distance(),

@@ -171,7 +171,7 @@
     //Find all aprproximate occurrences of a pattern in a string, with mismatches
     //
     //--------------------------------------------
-    pub fn approximate_pattern_matching(pttrn:&str, text:String, mismatch_number:usize) -> Vec<usize> {
+    pub fn approx_pattern_matching(pttrn:&str, text:String, mismatch_number:usize) -> Vec<usize> {
         let mut positions:Vec<usize> = Vec::new();
         if text.len() < pttrn.len() {return positions }
         for i in 0..=text.len() - pttrn.len() {
@@ -181,42 +181,6 @@
         }
         positions
     }
-    pub fn approximate_pattern_count(text:&str, pttrn:&str, d:usize) -> usize {
-        let mut count = 0;
-        for i in 0..=text.len() - pttrn.len() {
-            if  hamming_distance(&text[i..i+pttrn.len()],&pttrn) <= d {
-                count += 1;
-            }
-        }
-        count
-    }
-
-    pub fn find_frequent_word_with_missmatch(text:&str,k:usize, d:usize) -> HashSet<String> {
-        let mut frequent = HashSet::<String>::new();
-        let mut frequency_array: Vec<usize> = vec![0; (4usize).pow(k as u32)];
-        let mut close: Vec<usize> = vec![0; (4usize).pow(k as u32)];
-        for i in 0..=text.len()-k {
-            let ngbhrs = neighbors(&text[i..i+k], d);
-            for nb in ngbhrs {
-                let index = pattern_to_number(&nb);
-                close[index] = 1;
-            }
-        }
-        for i in 0..(4usize).pow(k as u32) {
-            if close[i] == 1 {
-                let pttrn = number_to_pattern(i, k);
-                frequency_array[i] = approximate_pattern_count(text, &pttrn, d);
-            } 
-        }
-        let max_count:usize = *frequency_array.iter().max().unwrap();
-        for i in 0..(4usize).pow(k as u32) {
-            if frequency_array[i] == max_count {
-                let pttrn = number_to_pattern(i, k);
-                frequent.insert(pttrn);
-            }
-        }
-        frequent
-    }
 
     //--------------------------------------------
     //challenge 1I, Bioinformatics Compeau-Pevzner
@@ -225,7 +189,7 @@
     //Se determina el k-mer de tamaño k más frecuente en el texto text
     //
     //--------------------------------------------
-    pub fn find_frequent_word_with_missmatch_by_sorting(text:&str,k:usize, d:usize) -> HashSet<String> {
+    pub fn freq_word_miss_sort(text:&str,k:usize, d:usize) -> HashSet<String> {
         let mut frequent = HashSet::<String>::new();
         let mut neigborhoods = Vec::<String>::new();
         for i in 0..=text.len()-k {
@@ -262,7 +226,7 @@
     //Se determina el k-mer de tamaño k más frecuente en el texto text
     //
     //--------------------------------------------
-    pub fn find_frequent_word_with_missmatch_and_reverse_by_sorting(text:&str,k:usize, d:usize) -> HashSet<String> {
+    pub fn freq_word_miss_rev_sort(text:&str,k:usize, d:usize) -> HashSet<String> {
         let mut frequent = HashSet::<String>::new();
         let mut neigborhoods = Vec::<String>::new();
         for i in 0..=text.len()-k {
